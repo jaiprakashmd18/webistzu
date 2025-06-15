@@ -591,11 +591,12 @@
     <section class="hero">
         <h1>Your <span>Web Presence</span>, Our Expertise</h1>
         <p>webistzu connects businesses with top web developers while handling all the complexities. No direct contact needed - we manage everything for you.</p>
-        <div class="hero-buttons">
-            <a href="#" class="cta-button">I Need a Website</a>
-            <a href="#" class="secondary-button">I'm a Developer</a>
-        </div>
-    </section>
+        <!-- In your hero section -->
+<div class="hero-buttons">
+    <a href="login.html?type=client"class="cta-button">I Need a Website</a>
+    <a href="login.html?type=developer"class="secondary-button">I'm a Developer</a>
+</div>    
+</section>
 
     <!-- Features -->
     <section class="features" id="features">
@@ -683,7 +684,11 @@
     <section class="cta-section">
         <h2>Ready to Establish Your Web Presence?</h2>
         <p>Whether you need a simple website or complex web application, webistzu makes the process seamless and stress-free.</p>
-        <a href="#" class="white-button">Get Started Now</a>
+        <div class="dropdown">
+        <a href="#" class="cta-button">Get Started Now <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+            <a href="login.html?type=client">I Need a Website</a>
+            <a href="login.html?type=developer">I'm a Developer</a>
     </section>
 
     <!-- Footer -->
