@@ -103,7 +103,39 @@
             transform: translateY(-2px);
         }
         
-        .mobile-menu {
+        /* Add dropdown styles */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: var(--dark-gray);
+        min-width: 200px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 0.3rem;
+        overflow: hidden;
+    }
+    
+    .dropdown-content a {
+        color: var(--light);
+        padding: 12px 16px;
+        display: block;
+        transition: background-color 0.3s;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: var(--primary-dark);
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .mobile-menu {
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
@@ -538,16 +570,20 @@
                 <img src="logo.png" alt="Webistzu Logo" class="logo-img">
                 <span>webistzu</span>
             </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#about">About</a>
-                <a href="#" class="cta-button">Get Started</a>
-            </div>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
+            <!-- In your index.html, update the nav-links section -->
+<div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <div class="dropdown">
+        <a href="#" class="cta-button">Get Started <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown-content">
+            <a href="login.html?type=client">I Need a Website</a>
+            <a href="login.html?type=developer">I'm a Developer</a>
+        </div>
+       </div>
+      </div>
         </nav>
     </header>
 

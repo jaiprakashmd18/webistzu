@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions | Webistzu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #f59e0b;
+            --dark: #000000;
+            --light: #ffffff;
+            --gray: #94a3b8;
+            --dark-gray: #1e293b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            padding-top: 80px; /* This matches header height */
+        }
+        
+        /* Fixed Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            z-index: 1000; /* High z-index to stay on top */
+            backdrop-filter: blur(10px);
+            height: 80px; /* Fixed height */
+            display: flex;
+            align-items: center;
+        }
+        
+        nav {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.4rem; /* Reduced from 1.8rem */
+    color: var(--light);
+}
+
+.logo-img {
+    height: 28px; /* Reduced from original size */
+    width: auto; /* Maintain aspect ratio */
+}
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .cta-button {
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 0.7rem 1.5rem;
+            border-radius: 0.3rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+        }
+        /* Terms Content */
+        .terms-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 5%;
+        }
+        
+        .terms-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .terms-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .terms-header p {
+            color: var(--gray);
+        }
+        
+        .terms-content {
+            background-color: rgba(30, 41, 59, 0.5);
+            border-radius: 0.8rem;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .terms-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .terms-section h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+        
+        .terms-section h3 {
+            color: var(--light);
+            margin: 1.5rem 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .terms-section p, .terms-section ul {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        
+        .terms-section ul {
+            padding-left: 2rem;
+        }
+        
+        .terms-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .explanation {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-left: 3px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .explanation::before {
+            content: "🔹";
+            margin-right: 0.5rem;
+        }
+        
+        /* Footer - Same as main site */
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 5rem 5% 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+            color: var(--light);
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 3rem;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-column ul li a {
+            color: var(--gray);
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            padding-left: 0.5rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 1rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .terms-content {
+                padding: 2rem;
+            }
+            
+            .terms-header h1 {
+                font-size: 2rem;
+            }
+        }
+        .cta-button {
+    text-decoration: none !important;
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="Webistzu Logo" class="logo-img">
+                <span>Webistzu</span>
+            </div>
+            <a href="index.html" class="cta-button">Back to Home</a>
+        </nav>
+    </header>
+
+    <!-- Terms Content -->
+    <main class="terms-container">
+        <div class="terms-header">
+            <h1>Terms and Conditions</h1>
+            <p>Last Updated: January 1, 2025</p>
+        </div>
+        
+        <div class="terms-content">
+            <div class="terms-section">
+                <h2>1. Introduction</h2>
+                <p><strong>"Webistzu"</strong> (referred to as <strong>"we," "us," or "our"</strong>) is a web presence brokerage service that connects businesses with vetted developers. By using our website (<strong>"Service"</strong>), you (<strong>"Client" or "Developer"</strong>) agree to these Terms and Conditions (<strong>"Terms"</strong>).</p>
+                <div class="explanation">Defines who we are and who the user is. Establishes that using the site means agreeing to the rules.</div>
+            </div>
+            
+            <div class="terms-section">
+                <h2>2. Service Description</h2>
+                <p>Webistzu acts as an intermediary between:</p>
+                <ul>
+                    <li><strong>Clients</strong> (businesses/individuals needing websites)</li>
+                    <li><strong>Developers</strong> (pre-vetted professionals who build websites)</li>
+                </ul>
+                <p>We handle:</p>
+                <ul>
+                    <li>Project matching</li>
+                    <li>Secure payments</li>
+                    <li>Quality assurance</li>
+                    <li>Dispute resolution</li>
+                </ul>
+                <div class="explanation">Clarifies our role (we're a broker, not a direct developer). Lists what we manage to set expectations.</div>
+            </div>
+            
+            <div class="terms-section">
+                <h2>3. User Responsibilities</h2>
+                <h3>Clients must:</h3>
+                <ul>
+                    <li>Provide accurate project requirements</li>
+                    <li>Pay fees as agreed</li>
+                    <li>Not contact developers directly (all communication goes through Webistzu)</li>
+                </ul>
+                
+                <h3>Developers must:</h3>
+                <ul>
+                    <li>Deliver work meeting quality standards</li>
+                    <li>Adhere to deadlines</li>
+                    <li>Not contact clients outside Webistzu</li>
+                </ul>
+                <div class="explanation">Prevents misuse (e.g., clients bypassing fees or developers poaching clients). Ensures accountability.</div>
+            </div>
+            
+            <div class="terms-section">
+                <h2>4. Payments & Fees</h2>
+                <ul>
+                    <li>Clients pay Webistzu, not developers directly</li>
+                    <li>Fees are non-refundable once development starts (<em>except where required by law</em>)</li>
+                    <li>Chargebacks result in service termination</li>
+                </ul>
+                <div class="explanation">Protects developers from unpaid work. Discourages fraudulent disputes.</div>
+            </div>
+            
+            <div class="terms-section">
+                <h2>5. Intellectual Property (IP)</h2>
+                <ul>
+                    <li>Clients own all final website code/designs</li>
+                    <li>Developers retain no rights after payment</li>
+                    <li>Webistzu may showcase work in portfolios (<em>unless Client requests anonymity</em>)</li>
+                </ul>
+                <div class="explanation">Ensures clients legally own their website. Lets us display work for marketing (with permission).</div>
+            </div>
+            
+            <div class="terms-section">
+                <h2>6. Limitation of Liability</h2>
+                <p>Webistzu is <strong>not liable</strong> for:</p>
+                <ul>
+                    <li>Bugs/errors in delivered websites (developers are responsible)</li>
+                    <li>Client-developer disputes (though we'll mediate)</li>
+                    <li>Third-party tools (e.g., WordPress, hosting issues)</li>
+                </ul>
+                <div class="explanation">Limits legal responsibility for issues beyond our control.</div>
+            </div>
+            
+            <div class="terms-section">
+                <h2>7. Termination</h2>
+                <p>We may suspend accounts for:</p>
+                <ul>
+                    <li>Fraudulent activity</li>
+                    <li>Harassment</li>
+                    <li>Repeated policy violations</li>
+                </ul>
+                <div class="explanation">Protects the community from abuse.</div>
+            </div>
+            
+            <div class="terms-section">
+                <h2>8. Changes to Terms</h2>
+                <p>We may update these Terms. Users will be notified via email or site announcements.</p>
+                <div class="explanation">Lets us adapt policies as needed.</div>
+            </div>
+            
+            <div class="terms-section">
+                <h2>9. Governing Law</h2>
+                <p>These Terms follow the laws of <strong>[Your Country/State]</strong>. Disputes will be resolved in <strong>[Courts Location]</strong>.</p>
+                <div class="explanation">Specifies which legal system applies.</div>
+            </div>
+            
+            <div class="terms-section">
+                <h2>10. Contact Us</h2>
+                <p>For questions about these Terms, contact us at <a href="mailto:webistzu@gmail.com">legal@webistzu.com</a>.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Webistzu</h3>
+                <p>Webpages. Web Presence. Webistzu.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="cookies.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Webistzu. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

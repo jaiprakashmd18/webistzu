@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webistzu - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6;        /* Client blue */
+            --developer: #10b981;      /* Developer green */
+            --primary-dark: #2563eb;
+            --developer-dark: #0d9b6c;
+            --bg-color: #1a1a1a;
+            --card-color: #2d2d2d;
+            --text-color: #ecf0f1;
+            --input-bg: #3d3d3d;
+            --border-color: #444;
+            --error: #e74c3c;
+            --success: #2ecc71;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .auth-container {
+            background-color: var(--card-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 420px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--primary);
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .logo-img {
+            height: 32px;
+        }
+        
+        .user-type-banner {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .client-banner {
+            background-color: rgba(59, 130, 246, 0.2);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .developer-banner {
+            background-color: rgba(16, 185, 129, 0.2);
+            border: 1px solid var(--developer);
+            color: var(--developer);
+        }
+        
+        h2 {
+            margin-bottom: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 16px;
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        
+        .client-btn {
+            background-color: var(--primary);
+        }
+        
+        .developer-btn {
+            background-color: var(--developer);
+        }
+        
+        button {
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .client-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .developer-btn:hover {
+            background-color: var(--developer-dark);
+        }
+        
+        .toggle-form {
+            margin-top: 20px;
+            color: #bdc3c7;
+        }
+        
+        .toggle-form a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .toggle-form a:hover {
+            text-decoration: underline;
+        }
+        
+        .error {
+            color: var(--error);
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: left;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="logo">
+            <img src="logo.png" alt="Webistzu Logo" class="logo-img">
+            <span>webistzu</span>
+        </div>
+        
+        <div id="user-type-banner" class="user-type-banner">
+            <i class="fas fa-user-tie"></i>
+            <span id="user-type-display">Client Account</span>
+        </div>
+        
+        <!-- Login Form -->
+        <div id="login-form">
+            <h2>Login to Your Account</h2>
+            <div id="login-error" class="error hidden"></div>
+            <form id="login-form-elements">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" id="login-btn">Login</button>
+            </form>
+            <div class="toggle-form">
+                Don't have an account? <a href="#" class="toggle-auth">Sign up</a>
+            </div>
+        </div>
+        
+        <!-- Signup Form -->
+        <div id="signup-form" class="hidden">
+            <h2>Create New Account</h2>
+            <div id="signup-error" class="error hidden"></div>
+            <form id="signup-form-elements">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email Address</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password (min 6 characters)</label>
+                    <input type="password" id="signup-password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" required>
+                </div>
+                <button type="submit" id="signup-btn">Create Account</button>
+            </form>
+            <div class="toggle-form">
+                Already have an account? <a href="#" class="toggle-auth">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const userType = urlParams.get('type') || 'client';
+        
+        // DOM Elements
+        const loginForm = document.getElementById('login-form');
+        const signupForm = document.getElementById('signup-form');
+        const toggleLinks = document.querySelectorAll('.toggle-auth');
+        const typeBanner = document.getElementById('user-type-banner');
+        const typeDisplay = document.getElementById('user-type-display');
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        
+        // Set user type display
+        if (userType === 'developer') {
+            typeBanner.classList.add('developer-banner');
+            typeBanner.classList.remove('client-banner');
+            typeDisplay.textContent = 'Developer Account';
+            loginBtn.classList.add('developer-btn');
+            signupBtn.classList.add('developer-btn');
+        } else {
+            typeBanner.classList.add('client-banner');
+            typeBanner.classList.remove('developer-banner');
+            typeDisplay.textContent = 'Client Account';
+            loginBtn.classList.add('client-btn');
+            signupBtn.classList.add('client-btn');
+        }
+        
+        // Toggle between forms
+        toggleLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginForm.classList.toggle('hidden');
+                signupForm.classList.toggle('hidden');
+                
+                // Clear errors when switching
+                document.getElementById('login-error').classList.add('hidden');
+                document.getElementById('signup-error').classList.add('hidden');
+            });
+        });
+        
+        // User storage functions
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('webistzu_users')) || [];
+        }
+        
+        function saveUsers(users) {
+            localStorage.setItem('webistzu_users', JSON.stringify(users));
+        }
+        
+        // Login handler
+        document.getElementById('login-form-elements').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            const users = getUsers();
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                localStorage.setItem('current_webistzu_user', JSON.stringify(user));
+                
+                // Redirect based on user type
+                if (user.type === 'client') {
+                    window.location.href = 'client-dashboard.html';
+                } else {
+                    window.location.href = 'developer-dashboard.html';
+                }
+            } else {
+                document.getElementById('login-error').textContent = 'Invalid email or password';
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        });
+        
+        // Signup handler
+        document.getElementById('signup-form-elements').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+            
+            // Validation
+            const errorElement = document.getElementById('signup-error');
+            if (password !== confirmPassword) {
+                errorElement.textContent = 'Passwords do not match';
+                errorElement.classList.remove('hidden');
+                return;
+            }
+            
+            if (password.length < 6) {
+                errorElement.textContent = 'Password must be at least 6 characters';
+                errorElement.classList.remove('hidden');
+                return;
+            }
+            
+            const users = getUsers();
+            if (users.some(u => u.email === email)) {
+                errorElement.textContent = 'Email already registered';
+                errorElement.classList.remove('hidden');
+                return;
+            }
+            
+            // Create new user with type
+            const newUser = { 
+                id: Date.now().toString(),
+                name, 
+                email, 
+                password,
+                type: userType,
+                createdAt: new Date().toISOString()
+            };
+            
+            users.push(newUser);
+            saveUsers(users);
+            localStorage.setItem('current_webistzu_user', JSON.stringify(newUser));
+            
+            // Redirect after signup
+            if (userType === 'client') {
+                window.location.href = 'client-dashboard.html';
+            } else {
+                window.location.href = 'developer-dashboard.html';
+            }
+        });
+    </script>
+</body>
+</html>
