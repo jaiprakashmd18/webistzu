@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webistzu | Portfolio</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            padding-top: 80px; /* Space for fixed navbar */
+        }
+        
+        /* Fixed Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(59, 130, 246, 0.2);
+            border-bottom: 1px solid #1e1e1e;
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #fff;
+        }
+        
+        .filters {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .filter-btn {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #3b82f6;
+            padding: 8px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #3b82f6;
+            color: #fff;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            margin: 0 auto 40px;
+            max-width: 1200px;
+            border-radius: 10px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #3b82f6;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #ccc;
+        }
+        
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+        
+        .portfolio-card {
+            background: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #1e1e1e;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+            border-color: #3b82f6;
+        }
+        
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #3b82f6;
+        }
+        
+        .card-content p {
+            color: #aaa;
+            margin-bottom: 15px;
+            min-height: 60px;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-tag {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: #3b82f6;
+            border: 1px solid #3b82f6;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+        
+        .btn-solid {
+            background: #3b82f6;
+            color: #fff;
+        }
+        
+        .btn-solid:hover {
+            background: #2563eb;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #1e1e1e;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #111;
+            color: #3b82f6;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background: #3b82f6;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .filters {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #000;
+                padding: 20px;
+                flex-direction: column;
+                gap: 10px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+            }
+            
+            .filters.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="logo">Webistzu</a>
+            
+            
+        <div class="filters" id="filterContainer">
+               <a href="#" class="logo"><span>Webpages. Web Presence.</span> Webistzu.</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Our Portfolio</h1>
+        <p>Explore our latest projects and see how we've helped businesses and individuals achieve their digital goals with cutting-edge web solutions.</p>
+    </section>
+    
+    <!-- Portfolio Grid -->
+    <div class="portfolio-grid">
+        <!-- Project 1 -->
+        <div class="portfolio-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Personal Portfolio">
+            </div>
+            <div class="card-content">
+                <h3>Personal Portfolio</h3>
+                <p>A sleek, modern portfolio site for a software developer featuring project showcases and skills visualization.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">GSAP</span>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-outline">View Details</a>
+                    <a href="http://jaiprakashmd.com" class="btn btn-solid">Live Demo</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="portfolio-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="MeChat App">
+            </div>
+            <div class="card-content">
+                <h3>MeChat - Chat Application</h3>
+                <p>A modern chat application inspired by Discord with real-time messaging, channels, and user management.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Socket.IO</span>
+                    <span class="tech-tag">MongoDB</span>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-outline">View Details</a>
+                    <a href="#" class="btn btn-solid">Coming Soon</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 3 -->
+        <div class="portfolio-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80" alt="Business Dashboard">
+            </div>
+            <div class="card-content">
+                <h3>Business Analytics Dashboard</h3>
+                <p>Comprehensive analytics platform for businesses to track KPIs, user engagement, and sales performance.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">D3.js</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">PostgreSQL</span>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-outline">View Details</a>
+                    <a href="#" class="btn btn-solid">Live Demo</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 4 -->
+        <div class="portfolio-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="E-commerce Store">
+            </div>
+            <div class="card-content">
+                <h3>Fashion E-commerce Store</h3>
+                <p>Full-featured online store with product catalog, shopping cart, payment integration, and admin dashboard.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Stripe API</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-outline">View Details</a>
+                    <a href="#" class="btn btn-solid">Live Demo</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 5 -->
+        <div class="portfolio-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Design Portfolio">
+            </div>
+            <div class="card-content">
+                <h3>Creative Design Portfolio</h3>
+                <p>Interactive portfolio for a graphic designer featuring animated galleries and project showcases.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Three.js</span>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-outline">View Details</a>
+                    <a href="#" class="btn btn-solid">Live Demo</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 6 -->
+        <div class="portfolio-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Restaurant Website">
+            </div>
+            <div class="card-content">
+                <h3>Restaurant Website & Reservation</h3>
+                <p>Complete restaurant website with online menu, reservation system, and event calendar.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">CSS Modules</span>
+                    <span class="tech-tag">Google Maps API</span>
+                </div>
+                <div class="card-actions">
+                    <a href="#" class="btn btn-outline">View Details</a>
+                    <a href="#" class="btn btn-solid">Live Demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="webistzu@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.facebook.com/share/1bWHG2tDt4/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/webistzu/"><i class="fab fa-instagram"></i></a>
+            <a href="www.webistzu.com"><i class="fab fa-dribbble"></i></a>
+        </div>
+        <p class="copyright">© 2025 Webistzu. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const filterContainer = document.getElementById('filterContainer');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            filterContainer.classList.toggle('active');
+        });
+        
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // In a real implementation, you would filter the projects here
+            });
+        });
+        
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.8)';
+                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                navbar.style.boxShadow = '0 2px 15px rgba(59, 130, 246, 0.2)';
+                navbar.style.background = '#000';
+            }
+        });
+    </script>
+</body>
+</html>
