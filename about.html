@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | Webistzu</title>
+    <style>
+        :root {
+            --primary-blue: #3a86ff;
+            --secondary-blue: #4cc9f0;
+            --dark-bg: #0f172a;
+            --darker-bg: #020617;
+            --card-bg: #1e293b;
+            --text-white: #f8fafc;
+            --light-text: #94a3b8;
+            --accent-blue: #60a5fa;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--text-white);
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+        
+        header {
+            background-color: var(--darker-bg);
+            border-bottom: 1px solid #1e293b;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--light-text);
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 15px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .active {
+            color: var(--primary-blue) !important;
+            font-weight: 600 !important;
+        }
+        
+        .subpage-hero {
+            background: linear-gradient(135deg, var(--darker-bg), #1e40af);
+            padding: 90px 0 70px;
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #1e40af;
+        }
+        
+        .subpage-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .subpage-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-text);
+        }
+        
+        .content-section {
+            background-color: var(--card-bg);
+            border-radius: 14px;
+            padding: 45px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 35px;
+            border: 1px solid #334155;
+        }
+        
+        h2 {
+            color: var(--primary-blue);
+            margin-top: 0;
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+        
+        h3 {
+            color: var(--accent-blue);
+            margin-top: 35px;
+            font-size: 1.4rem;
+        }
+        
+        p, li {
+            color: var(--light-text);
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        strong {
+            color: var(--text-white);
+            font-weight: 600;
+        }
+        
+        .pdf-download {
+            background-color: rgba(58, 134, 255, 0.08);
+            border: 1px solid var(--primary-blue);
+            padding: 35px;
+            border-radius: 12px;
+            margin: 60px 0 40px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .pdf-download:hover {
+            background-color: rgba(58, 134, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .pdf-info h3 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            color: var(--primary-blue);
+        }
+        
+        .pdf-info p {
+            color: var(--light-text);
+            margin-bottom: 25px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 20px rgba(58, 134, 255, 0.3);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(58, 134, 255, 0.5);
+        }
+        
+        .download-btn i {
+            margin-right: 12px;
+            font-size: 22px;
+        }
+        
+        footer {
+            background-color: var(--darker-bg);
+            color: var(--light-text);
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 80px;
+            border-top: 1px solid #1e293b;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-blue);
+        }
+        
+        .copyright {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 20px;
+            }
+            
+            .subpage-hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .subpage-hero p {
+                font-size: 1.1rem;
+                padding: 0 15px;
+            }
+            
+            .content-section {
+                padding: 30px;
+            }
+            
+            .pdf-download {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Webistzu</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/resources" class="active">Resources</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="subpage-hero">
+        <div class="container">
+            <h1>Webistzu Resource Hub</h1>
+            <p>Premium web development resources, tools, and guides to elevate your digital projects</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <section class="content-section">
+            <h2>Expert Web Development Resources</h2>
+            <p>At Webistzu, we've compiled the most valuable tools and knowledge from our years of experience building high-performance websites and applications. These resources will help you work smarter and deliver exceptional results.</p>
+            
+            <h3>Core Web Technologies</h3>
+            <p>The foundation of every great web project:</p>
+            <ul>
+                <li><strong>Modern HTML5</strong> - Semantic markup for better SEO and accessibility</li>
+                <li><strong>CSS3 & Flexbox/Grid</strong> - Advanced layout techniques for responsive designs</li>
+                <li><strong>JavaScript ES6+</strong> - Modern syntax and features for powerful interactivity</li>
+                <li><strong>Web Performance</strong> - Critical techniques for lightning-fast sites</li>
+            </ul>
+            
+            <h3>Webistzu Recommended Stack</h3>
+            <p>Our battle-tested combination of technologies:</p>
+            <ul>
+                <li><strong>React.js</strong> - Component-based UI library for dynamic interfaces</li>
+                <li><strong>Next.js</strong> - The ultimate React framework for production</li>
+                <li><strong>Tailwind CSS</strong> - Utility-first CSS framework we use for all projects</li>
+                <li><strong>Node.js</strong> - JavaScript runtime for server-side applications</li>
+            </ul>
+            
+            <div class="pdf-download">
+                <div class="pdf-info">
+                    <h3>Webistzu Developer Handbook</h3>
+                    <p>Download our exclusive 35-page PDF containing professional workflows, code snippets, architecture patterns, and performance optimization techniques we use in client projects.</p>
+                </div>
+                <a href="/downloads/webistzu-developer-handbook.pdf" class="download-btn" download>
+                    <i class="fas fa-file-pdf"></i> Download Handbook
+                </a>
+            </div>
+            
+            <h3>Essential Developer Tools</h3>
+            <p>Our team's must-have tools for daily work:</p>
+            <ul>
+                <li><strong>VS Code</strong> - With our custom settings and extension pack</li>
+                <li><strong>Chrome DevTools</strong> - Advanced debugging techniques</li>
+                <li><strong>Figma</strong> - For collaborative design workflows</li>
+                <li><strong>Git/GitHub</strong> - Professional version control practices</li>
+            </ul>
+            
+            <h3>Webistzu Methodology</h3>
+            <p>What makes our approach special:</p>
+            <ul>
+                <li><strong>Performance-First</strong> - Every decision considers loading speed</li>
+                <li><strong>Component-Driven</strong> - Reusable, maintainable code architecture</li>
+                <li><strong>Progressive Enhancement</strong> - Core functionality works everywhere</li>
+                <li><strong>Continuous Optimization</strong> - Regular audits and improvements</li>
+            </ul>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/about">About Webistzu</a>
+                <a href="/portfolio">Our Work</a>
+                <a href="/blog">Insights</a>
+                <a href="/careers">Join Our Team</a>
+            </div>
+            <p class="copyright">© 2023 Webistzu. All rights reserved. Crafted with <i class="fas fa-heart" style="color: #3a86ff;"></i> for the web.</p>
+        </div>
+    </footer>
+</body>
+</html>
