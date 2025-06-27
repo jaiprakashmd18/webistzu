@@ -21,16 +21,22 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .form-card {
             max-width: 700px;
+            width: 100%;
             margin: 0 auto;
             background: var(--card);
             border-radius: 12px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border: 1px solid var(--border);
+            box-sizing: border-box;
         }
         
         h1 {
@@ -40,6 +46,7 @@
             background-clip: text;
             color: transparent;
             margin-bottom: 20px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
         }
         
         .form-group {
@@ -50,6 +57,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
+            font-size: clamp(0.9rem, 3vw, 1rem);
         }
         
         .required label::after {
@@ -64,8 +72,9 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             color: var(--text);
-            font-size: 16px;
+            font-size: clamp(0.9rem, 3vw, 1rem);
             transition: all 0.3s;
+            box-sizing: border-box;
         }
         
         input:focus, textarea:focus, select:focus {
@@ -100,7 +109,7 @@
             border: none;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 16px;
+            font-size: clamp(1rem, 3vw, 1.1rem);
             cursor: pointer;
             transition: transform 0.2s;
         }
@@ -108,14 +117,48 @@
         button:hover {
             transform: translateY(-2px);
         }
-        
-        @media (max-width: 600px) {
+
+        /* Improved responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
             .form-card {
                 padding: 20px;
             }
             
             .checkbox-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .form-card {
+                padding: 15px;
+            }
+            
+            .checkbox-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            input, textarea, select, button {
+                padding: 10px 12px;
+            }
+        }
+        
+        /* Tablet-specific adjustments */
+        @media (min-width: 481px) and (max-width: 1024px) {
+            .form-card {
+                max-width: 90%;
+            }
+            
+            .checkbox-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             }
         }
     </style>
