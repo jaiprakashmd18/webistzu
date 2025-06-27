@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Webistzu | Developer Application</title>
     <style>
         :root {
@@ -21,18 +21,23 @@
             color: var(--text);
             font-family: 'Inter', system-ui, sans-serif;
             line-height: 1.6;
-            padding: 20px;
+            padding: 15px;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .form-container {
             max-width: 700px;
+            width: 100%;
             margin: 0 auto;
             background: var(--card);
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             border: 1px solid var(--border);
+            box-sizing: border-box;
         }
 
         h1 {
@@ -42,19 +47,19 @@
             background-clip: text;
             color: transparent;
             margin-bottom: 1.5rem;
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
         }
 
         .section-title {
-            font-size: 1.3rem;
-            margin: 2rem 0 1rem;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            margin: 1.5rem 0 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--primary);
             color: var(--primary);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         label {
@@ -62,6 +67,7 @@
             margin-bottom: 0.5rem;
             font-weight: 500;
             color: var(--text);
+            font-size: clamp(0.9rem, 3vw, 1rem);
         }
 
         .required label::after {
@@ -71,13 +77,14 @@
 
         input, textarea, select {
             width: 100%;
-            padding: 12px 16px;
+            padding: 12px 15px;
             background: #252525;
             border: 1px solid var(--border);
             border-radius: 8px;
             color: var(--text);
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
             transition: all 0.2s;
+            box-sizing: border-box;
         }
 
         input:focus, textarea:focus, select:focus {
@@ -89,9 +96,9 @@
 
         .checkbox-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 12px;
-            margin-top: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 8px;
         }
 
         .checkbox-item {
@@ -102,13 +109,16 @@
 
         .checkbox-item input {
             width: auto;
+            min-width: 18px;
+            min-height: 18px;
             accent-color: var(--primary);
         }
 
         .radio-group {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             margin-top: 8px;
+            flex-wrap: wrap;
         }
 
         .radio-item {
@@ -119,13 +129,13 @@
 
         button {
             width: 100%;
-            padding: 16px;
+            padding: 15px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border: none;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: clamp(1rem, 3vw, 1.1rem);
             cursor: pointer;
             transition: all 0.2s;
             margin-top: 1rem;
@@ -136,9 +146,33 @@
             box-shadow: 0 4px 16px rgba(138, 43, 226, 0.3);
         }
 
-        @media (max-width: 600px) {
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+            
             .form-container {
                 padding: 20px;
+            }
+            
+            .checkbox-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            }
+            
+            .radio-group {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .form-container {
+                padding: 15px;
+                border-radius: 10px;
             }
             
             .checkbox-grid {
@@ -147,11 +181,22 @@
             
             .radio-group {
                 flex-direction: column;
-                gap: 10px;
+                gap: 8px;
             }
             
-            h1 {
-                font-size: 1.8rem;
+            input, textarea, select, button {
+                padding: 10px 12px;
+            }
+        }
+
+        /* Tablet-specific adjustments */
+        @media (min-width: 481px) and (max-width: 1024px) {
+            .form-container {
+                max-width: 90%;
+            }
+            
+            .checkbox-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             }
         }
     </style>
