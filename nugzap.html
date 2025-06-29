@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="faviconnugzap.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="faviconnugzap.ico" type="image/x-icon">
+    <title>NUGZAP - Crispy Vibes, Zappy Bites</title>
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: white;
+            -webkit-text-size-adjust: 100%;
+        }
+        
+        /* Header */
+        header {
+            background-color: #ef9718;
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: bold;
+            margin: 0;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-size: clamp(1rem, 4vw, 1.8rem);
+            margin: 5px 0 0;
+            color: white;
+            font-style: italic;
+        }
+        
+        /* Highlight Text */
+        .highlight-red {
+            color: #ff0000;
+            font-weight: bold;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd');
+            background-size: cover;
+            background-position: center;
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .hero h2 {
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .hero p {
+            font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+            max-width: 700px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        /* Buttons */
+        .cta-button {
+            background-color: #ef9718;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: clamp(0.9rem, 4vw, 1.2rem);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            width: fit-content;
+        }
+        
+        .cta-button:hover, .cta-button:active {
+            background-color: #d68510;
+            transform: scale(1.05);
+        }
+        
+        /* Menu Section */
+        .menu {
+            padding: 30px 15px;
+            text-align: center;
+        }
+        
+        .menu h2 {
+            font-size: clamp(1.5rem, 6vw, 2rem);
+            margin-bottom: 30px;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .menu-item {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:active {
+            transform: translateY(-5px);
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .item-info {
+            padding: 15px;
+        }
+        
+        .item-info h3 {
+            margin: 0 0 8px;
+            color: #ef9718;
+            font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+        }
+        
+        .price {
+            color: #ff0000;
+            font-weight: bold;
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            margin: 8px 0;
+        }
+        
+        /* Flavor Options */
+        .flavor-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0;
+        }
+        
+        .flavor-tag {
+            background-color: #ef9718;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: clamp(0.7rem, 3vw, 0.8rem);
+            white-space: nowrap;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1e1e1e;
+            padding: 25px 15px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: clamp(1.5rem, 6vw, 2rem);
+            margin-bottom: 15px;
+            color: #ef9718;
+        }
+        
+        footer p {
+            margin: 5px 0;
+            font-size: clamp(0.8rem, 3.5vw, 1rem);
+        }
+        
+        /* Mobile-Specific Adjustments */
+        @media (max-width: 480px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                min-height: 40vh;
+            }
+            
+            .cta-button {
+                padding: 10px 20px;
+            }
+        }
+        
+        /* Prevent Zooming on Input */
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">NUGZAP</h1>
+        <p class="tagline">CRISPY VIBES, ZAPPY BITES</p>
+    </header>
+    
+    <section class="hero">
+        <h2>ZAP INTO <span class="highlight-red">CRUNCHY</span> GOODNESS</h2>
+        <p>Our <span class="highlight-red">golden-crisp</span> snacks are made fresh daily with premium ingredients and served with <span class="highlight-red">zesty</span> dipping sauces that'll make your taste buds dance!</p>
+        <button class="cta-button">ORDER NOW</button>
+    </section>
+    
+    <section class="menu">
+        <h2>OUR <span class="highlight-red">ZAPPY</span> MENU</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1599481238640-4c1288750d7a" alt="Golden Nuggets">
+                <div class="item-info">
+                    <h3>GOLDEN NUGZ</h3>
+                    <div class="flavor-options">
+                        <span class="flavor-tag">Classic</span>
+                        <span class="flavor-tag">Spicy</span>
+                        <span class="flavor-tag">Cheese</span>
+                    </div>
+                    <p>Crispy on the outside, juicy on the inside - our signature nuggets</p>
+                    <div class="price">₹149 - ₹299</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5" alt="French Fries">
+                <div class="item-info">
+                    <h3>ZAPPY FRIES</h3>
+                    <div class="flavor-options">
+                        <span class="flavor-tag">Salted</span>
+                        <span class="flavor-tag">Peri-Peri</span>
+                        <span class="flavor-tag">Cheese</span>
+                    </div>
+                    <p>Perfectly crispy fries with your choice of seasoning</p>
+                    <div class="price">₹99 - ₹199</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950" alt="Vegetable Rolls">
+                <div class="item-info">
+                    <h3>CRUNCHY ROLLZ</h3>
+                    <div class="flavor-options">
+                        <span class="flavor-tag">Veg</span>
+                        <span class="flavor-tag">Paneer</span>
+                        <span class="flavor-tag">Chicken</span>
+                    </div>
+                    <p>Golden fried rolls stuffed with flavorful fillings</p>
+                    <div class="price">₹129 - ₹249</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950" alt="Samosas">
+                <div class="item-info">
+                    <h3>ZAPMOSAS</h3>
+                    <div class="flavor-options">
+                        <span class="flavor-tag">Aloo</span>
+                        <span class="flavor-tag">Paneer</span>
+                        <span class="flavor-tag">Keema</span>
+                    </div>
+                    <p>Traditional samosas with our zappy twist</p>
+                    <div class="price">₹79 - ₹149</div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1632818924360-68d4994cfdb2" alt="Masala Strings">
+                <div class="item-info">
+                    <h3>MASALA STRINGZ</h3>
+                    <div class="flavor-options">
+                        <span class="flavor-tag">Classic</span>
+                        <span class="flavor-tag">Spicy</span>
+                        <span class="flavor-tag">Cheese</span>
+                    </div>
+                    <p>Crunchy potato strings tossed in special masala</p>
+                    <div class="price">₹119 - ₹219</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-logo">NUGZAP</div>
+        <p>CRISPY VIBES, ZAPPY BITES</p>
+        <p>© 2023 All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Prevent 300ms delay on mobile taps
+        document.addEventListener('DOMContentLoaded', function() {
+            FastClick.attach(document.body);
+        }, false);
+    </script>
+</body>
+</html>
