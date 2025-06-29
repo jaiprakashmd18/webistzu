@@ -10,14 +10,15 @@
         /* Base Styles */
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
         
         body {
-            margin: 0;
-            padding: 0;
             font-family: 'Arial', sans-serif;
             background-color: #121212;
             color: white;
+            line-height: 1.6;
             -webkit-text-size-adjust: 100%;
         }
         
@@ -29,6 +30,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .logo {
@@ -57,7 +59,7 @@
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd');
             background-size: cover;
             background-position: center;
-            min-height: 50vh;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -76,7 +78,6 @@
             font-size: clamp(0.9rem, 3.5vw, 1.2rem);
             max-width: 700px;
             margin-bottom: 25px;
-            line-height: 1.5;
         }
         
         /* Buttons */
@@ -84,7 +85,7 @@
             background-color: #ef9718;
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 12px 30px;
             font-size: clamp(0.9rem, 4vw, 1.2rem);
             border-radius: 30px;
             cursor: pointer;
@@ -92,6 +93,8 @@
             text-transform: uppercase;
             font-weight: bold;
             width: fit-content;
+            text-decoration: none;
+            display: inline-block;
         }
         
         .cta-button:hover, .cta-button:active {
@@ -101,19 +104,20 @@
         
         /* Menu Section */
         .menu {
-            padding: 30px 15px;
+            padding: 40px 20px;
             text-align: center;
         }
         
         .menu h2 {
             font-size: clamp(1.5rem, 6vw, 2rem);
             margin-bottom: 30px;
+            color: #ef9718;
         }
         
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -123,33 +127,41 @@
             border-radius: 10px;
             overflow: hidden;
             transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
         
-        .menu-item:active {
+        .menu-item:hover {
             transform: translateY(-5px);
         }
         
         .menu-item img {
             width: 100%;
-            height: 180px;
+            height: 200px;
             object-fit: cover;
+            border-bottom: 2px solid #ef9718;
         }
         
         .item-info {
-            padding: 15px;
+            padding: 20px;
         }
         
         .item-info h3 {
-            margin: 0 0 8px;
+            margin: 0 0 10px;
             color: #ef9718;
             font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+        }
+        
+        .item-info p {
+            margin-bottom: 15px;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
         }
         
         .price {
             color: #ff0000;
             font-weight: bold;
             font-size: clamp(1rem, 4vw, 1.2rem);
-            margin: 8px 0;
+            margin: 10px 0;
+            display: block;
         }
         
         /* Flavor Options */
@@ -158,23 +170,24 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 8px;
-            margin: 12px 0;
+            margin: 15px 0;
         }
         
         .flavor-tag {
             background-color: #ef9718;
             color: white;
-            padding: 3px 8px;
+            padding: 5px 12px;
             border-radius: 20px;
             font-size: clamp(0.7rem, 3vw, 0.8rem);
-            white-space: nowrap;
+            font-weight: bold;
         }
         
         /* Footer */
         footer {
             background-color: #1e1e1e;
-            padding: 25px 15px;
+            padding: 30px 20px;
             text-align: center;
+            margin-top: 40px;
         }
         
         .footer-logo {
@@ -184,28 +197,75 @@
         }
         
         footer p {
-            margin: 5px 0;
+            margin: 10px 0;
             font-size: clamp(0.8rem, 3.5vw, 1rem);
         }
         
+        footer a {
+            color: #ef9718;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        footer li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        
         /* Mobile-Specific Adjustments */
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .menu-grid {
                 grid-template-columns: 1fr;
             }
             
             .hero {
-                min-height: 40vh;
+                min-height: 50vh;
             }
             
             .cta-button {
-                padding: 10px 20px;
+                padding: 15px 25px;
             }
         }
         
-        /* Prevent Zooming on Input */
-        input, select, textarea {
-            font-size: 16px !important;
+        /* Order Form Popup */
+        .order-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .order-form-container {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ef9718;
         }
     </style>
 </head>
@@ -218,7 +278,7 @@
     <section class="hero">
         <h2>ZAP INTO <span class="highlight-red">CRUNCHY</span> GOODNESS</h2>
         <p>Our <span class="highlight-red">golden-crisp</span> snacks are made fresh daily with premium ingredients and served with <span class="highlight-red">zesty</span> dipping sauces that'll make your taste buds dance!</p>
-        <button class="cta-button">ORDER NOW</button>
+        <a href="https://wa.me/917904452057?text=Hi%20NUGZAP!%20I'd%20like%20to%20place%20an%20order%3A%0A%0AITEMS%0A%0A%20%0AName%3A%20%0APhone%3A%20%0AZappy is not deliverable – come enjoy it fresh at our store!%0A%20" class="cta-button" target="_blank">ORDER NOW</a>
     </section>
     
     <section class="menu">
@@ -234,7 +294,7 @@
                         <span class="flavor-tag">Cheese</span>
                     </div>
                     <p>Crispy on the outside, juicy on the inside - our signature nuggets</p>
-                    <div class="price">₹149 - ₹299</div>
+                    <span class="price">₹149 - ₹299</span>
                 </div>
             </div>
             
@@ -248,7 +308,7 @@
                         <span class="flavor-tag">Cheese</span>
                     </div>
                     <p>Perfectly crispy fries with your choice of seasoning</p>
-                    <div class="price">₹99 - ₹199</div>
+                    <span class="price">₹99 - ₹199</span>
                 </div>
             </div>
             
@@ -262,7 +322,7 @@
                         <span class="flavor-tag">Chicken</span>
                     </div>
                     <p>Golden fried rolls stuffed with flavorful fillings</p>
-                    <div class="price">₹129 - ₹249</div>
+                    <span class="price">₹129 - ₹249</span>
                 </div>
             </div>
             
@@ -276,7 +336,7 @@
                         <span class="flavor-tag">Keema</span>
                     </div>
                     <p>Traditional samosas with our zappy twist</p>
-                    <div class="price">₹79 - ₹149</div>
+                    <span class="price">₹79 - ₹149</span>
                 </div>
             </div>
             
@@ -289,8 +349,8 @@
                         <span class="flavor-tag">Spicy</span>
                         <span class="flavor-tag">Icy</span>
                     </div>
-                    <p>Special masala</p>
-                    <div class="price">₹119 - ₹219</div>
+                    <p>Special masala potato strings with a zesty kick</p>
+                    <span class="price">₹119 - ₹219</span>
                 </div>
             </div>
         </div>
@@ -299,14 +359,23 @@
     <footer>
         <div class="footer-logo">NUGZAP</div>
         <p>CRISPY VIBES, ZAPPY BITES</p>
-        <p>© 2025 All Rights Reserved. <li><a href="https://webistzu.com" target="_blank">Webistzu</a></li></p>
+        <ul>
+            <li><a href="https://webistzu.com" target="_blank">Webistzu</a></li>
+            <li><a href="tel:+917904452057">Call Us</a></li>
+            <li><a href="https://wa.me/917904452057" target="_blank">WhatsApp</a></li>
+        </ul>
+        <p>© 2025 All Rights Reserved</p>
     </footer>
 
     <script>
-        // Prevent 300ms delay on mobile taps
+        // Simple WhatsApp order functionality
         document.addEventListener('DOMContentLoaded', function() {
-            FastClick.attach(document.body);
-        }, false);
+            // You can add more interactive features here if needed
+            console.log('NUGZAP - Ready for orders!');
+            
+            // For future enhancement: Form to select items before WhatsApp
+            // Currently using direct WhatsApp link with sample order
+        });
     </script>
 </body>
 </html>
