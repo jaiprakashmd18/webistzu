@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Webistzu - Developer IDs</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -17,319 +16,394 @@
             --gray: #94a3b8;
             --dark-gray: #1e293b;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: var(--dark);
             color: var(--light);
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        
-        /* Header - simplified version */
+
+        /* Header */
         header {
-            background-color: rgba(0, 0, 0, 0.8);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            background-color: rgba(0, 0, 0, 0.9);
             position: fixed;
             width: 100%;
-            z-index: 100;
+            z-index: 1000;
             backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
+            padding: 1rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 0.5rem;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--light);
+            text-decoration: none;
         }
-        
-        .logo-img {
-            height: 40px;
+
+        .logo img {
+            height: 36px;
             width: auto;
-            margin-right: 10px;
         }
-        
+
         .logo span {
             color: var(--primary);
         }
-        
+
+        /* Mobile First Navigation */
         .nav-links {
-            display: flex;
-            gap: 2rem;
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,0.95);
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            gap: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        
+
+        .nav-links.active {
+            display: flex;
+        }
+
         .nav-links a {
             color: var(--light);
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 1.1rem;
             text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
         }
-        
+
         .nav-links a:hover {
             color: var(--primary);
         }
-        
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: block;
+        }
+
         /* Main Content */
         .main-content {
-            padding: 10rem 5% 6rem;
+            padding: 6rem 5% 3rem;
             max-width: 1400px;
             margin: 0 auto;
         }
-        
+
         .page-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
-        
+
         .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
             font-weight: 700;
         }
-        
+
         .page-header h1 span {
             color: var(--primary);
         }
-        
+
         .page-header p {
             color: var(--gray);
             max-width: 700px;
             margin: 0 auto;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
-        
-        /* Developer Cards Grid */
-        .developers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        
-        .developer-card {
-            background-color: rgba(30, 41, 59, 0.5);
-            border-radius: 0.8rem;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .developer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
-            border-color: var(--primary);
-        }
-        
-        .developer-id {
-            display: inline-block;
-            background-color: rgba(59, 130, 246, 0.2);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 2rem;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .developer-name {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--light);
-        }
-        
-        .developer-role {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .developer-skills {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skill-tag {
-            display: inline-block;
-            background-color: rgba(59, 130, 246, 0.1);
-            color: var(--light);
-            padding: 0.3rem 0.8rem;
-            border-radius: 2rem;
-            font-size: 0.85rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .developer-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
+
         /* Search and Filter */
         .search-filter {
             background-color: rgba(30, 41, 59, 0.5);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 0.8rem;
-            margin-bottom: 3rem;
-            display: flex;
-            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 1rem;
-            align-items: center;
         }
-        
+
         .search-box {
-            flex: 1;
-            min-width: 250px;
             padding: 0.8rem 1.5rem;
             border-radius: 2rem;
             border: none;
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
             font-size: 1rem;
+            width: 100%;
         }
-        
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
         .filter-select {
             padding: 0.8rem 1rem;
-            border-radius: 0.3rem;
+            border-radius: 0.5rem;
             border: none;
             background-color: rgba(255, 255, 255, 0.1);
             color: white;
             font-size: 1rem;
+            width: 100%;
         }
-        
+
+        /* Developers Grid */
+        .developers-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .developer-card {
+            background-color: rgba(30, 41, 59, 0.5);
+            border-radius: 0.8rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .developer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(32, 192, 228, 0.2);
+            border-color: var(--primary);
+        }
+
+        .developer-id {
+            display: inline-block;
+            background-color: rgba(32, 192, 228, 0.2);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .developer-name {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .developer-role {
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .developer-skills {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background-color: rgba(32, 192, 228, 0.1);
+            color: var(--light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+        }
+
+        .developer-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
         /* Footer */
         footer {
             background-color: rgba(0, 0, 0, 0.9);
             color: white;
-            padding: 5rem 5% 3rem;
+            padding: 3rem 5% 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
             margin-bottom: 2rem;
-            position: relative;
-            padding-bottom: 1rem;
-            color: var(--light);
         }
-        
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
         .footer-column h3::after {
             content: '';
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 3rem;
-            height: 3px;
+            width: 2.5rem;
+            height: 2px;
             background-color: var(--primary);
         }
-        
+
         .footer-column ul {
             list-style: none;
         }
-        
+
         .footer-column ul li {
             margin-bottom: 1rem;
         }
-        
+
         .footer-column ul li a {
             color: var(--gray);
             transition: all 0.3s;
-            font-size: 1.1rem;
             text-decoration: none;
+            display: inline-block;
         }
-        
+
         .footer-column ul li a:hover {
             color: var(--primary);
-            padding-left: 0.5rem;
+            transform: translateX(5px);
         }
-        
+
         .social-links {
             display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
-        
+
         .social-links a {
             color: var(--light);
             background-color: rgba(255, 255, 255, 0.1);
-            width: 3rem;
-            height: 3rem;
+            width: 2.5rem;
+            height: 2.5rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
-            font-size: 1.2rem;
             text-decoration: none;
         }
-        
+
         .social-links a:hover {
             background-color: var(--primary);
             transform: translateY(-3px);
         }
-        
+
         .footer-bottom {
             text-align: center;
-            padding-top: 3rem;
+            padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--gray);
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 2.2rem;
+
+        /* Responsive Breakpoints */
+        @media (min-width: 480px) {
+            .developers-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .nav-links {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .menu-toggle {
                 display: none;
             }
             
-            .mobile-menu {
-                display: block;
+            .nav-links {
+                display: flex;
+                position: static;
+                flex-direction: row;
+                background: transparent;
+                width: auto;
+                padding: 0;
+                border: none;
+            }
+            
+            .search-filter {
+                grid-template-columns: 1fr auto auto;
+            }
+            
+            .filter-row {
+                display: flex;
+                gap: 1rem;
+            }
+            
+            .developers-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .developers-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
         }
     </style>
 </head>
 <body>
-    <!-- Simplified Header -->
+    <!-- Header -->
     <header>
         <nav>
-            <div class="logo">
-                <img src="logo.png" alt="Webistzu Logo" class="logo-img">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Webistzu Logo">
                 <span>Webistzu</span>
-            </div>
+            </a>
+            
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
             <div class="nav-links">
                 <a href="index.html#features">Features</a>
                 <a href="index.html#how-it-works">How It Works</a>
                 <a href="about.html">About</a>
-                <a href="developerid.html">Developers</a>
+                <a href="developer.html">Developers</a>
             </div>
         </nav>
     </header>
@@ -341,34 +415,34 @@
             <p>Meet our network of vetted web development professionals. Each developer undergoes rigorous screening to ensure top-quality work.</p>
         </div>
         
-        <!-- Search and Filter Section -->
+        <!-- Search and Filter -->
         <div class="search-filter">
             <input type="text" class="search-box" placeholder="Search developers...">
-            <select class="filter-select">
-                <option value="">All Roles</option>
-                <option value="frontend">Frontend</option>
-                <option value="backend">Backend</option>
-                <option value="fullstack">Full Stack</option>
-                <option value="designer">UI/UX Designer</option>
-            </select>
-            <select class="filter-select">
-                <option value="">All Skills</option>
-                <option value="react">React</option>
-                <option value="vue">Vue.js</option>
-                <option value="node">Node.js</option>
-                <option value="python">Python</option>
-            </select>
+            <div class="filter-row">
+                <select class="filter-select">
+                    <option value="">All Roles</option>
+                    <option value="frontend">Frontend</option>
+                    <option value="backend">Backend</option>
+                    <option value="fullstack">Full Stack</option>
+                    <option value="designer">UI/UX Designer</option>
+                </select>
+                <select class="filter-select">
+                    <option value="">All Skills</option>
+                    <option value="react">React</option>
+                    <option value="vue">Vue.js</option>
+                    <option value="node">Node.js</option>
+                    <option value="python">Python</option>
+                </select>
+            </div>
         </div>
         
-        <!-- Developers Grid - Only Developer 1 remains -->
+        <!-- Developers Grid -->
         <div class="developers-grid">
             <!-- Developer 1 -->
-            <a href="https://github.com/yashvinthan/">
-            <div class="developer-card">
-                <span class="developer-id">WZU-001</span> 
-                <a href="https://github.com/yashvinthan/">
-                <h3  class="developer-name">Yashvinthan M</h3></a>
-                <p class="developer-role">Full Stack Specialist</p>
+            <a href="https://yash.theslowwman.space/" class="developer-card">
+                <span class="developer-id">WZU-001</span>
+                <h3 class="developer-name">Yashvinthan Moorthy</h3>
+                <p class="developer-role">Full Stack</p>
                 <div class="developer-skills">
                     <span class="skill-tag">HTML5</span>
                     <span class="skill-tag">Python</span>
@@ -379,7 +453,9 @@
                     <span>1 years experience</span>
                     <span>0 projects</span>
                 </div>
-            </div> 
+            </a>
+            
+            <!-- Additional developer cards can be added here -->
         </div>
     </main>
 
@@ -390,10 +466,10 @@
                 <h3>Webistzu</h3>
                 <p>Webpages. Web Presence. Webistzu.</p>
                 <div class="social-links">
-                    <a href="mailto:webistzu@gmail.com?subject=Inquiry"><i class="fas fa-envelope"></i></a>
-                    <a href="https://www.facebook.com/share/1bWHG2tDt4/"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/webistzu"><i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com/webistzu"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             <div class="footer-column">
@@ -409,14 +485,14 @@
                 <ul>
                     <li><a href="developer.html">Apply to Join</a></li>
                     <li><a href="developer.html">Developer Login</a></li>
-                    <li><a href="developerid.html">Developer IDs</a></li>
+                    <li><a href="developer-ids.html">Developer IDs</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>Company</h3>
                 <ul>
                     <li><a href="https://jaiprakashmd.com" target="_blank">About Founder</a></li>
-                    <li><a href="mailto:webistzu@gmail.com?subject=Found Bug/Error404">Contact Us</a></li>
+                    <li><a href="mailto:webistzu@gmail.com">Contact Us</a></li>
                     <li><a href="terms.html">Terms of Service</a></li>
                 </ul>
             </div>
@@ -427,22 +503,23 @@
     </footer>
 
     <script>
-        // Simple search functionality
+        // Mobile Menu Toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Search Functionality
         document.querySelector('.search-box').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
             const cards = document.querySelectorAll('.developer-card');
             
             cards.forEach(card => {
                 const text = card.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = text.includes(searchTerm) ? 'block' : 'none';
             });
         });
         
-        // Filter functionality
+        // Filter Functionality
         const filters = document.querySelectorAll('.filter-select');
         filters.forEach(filter => {
             filter.addEventListener('change', function() {
@@ -457,11 +534,7 @@
                     const roleMatch = !roleFilter || role.includes(roleFilter);
                     const skillMatch = !skillFilter || skills.includes(skillFilter);
                     
-                    if (roleMatch && skillMatch) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                    card.style.display = (roleMatch && skillMatch) ? 'block' : 'none';
                 });
             });
         });
