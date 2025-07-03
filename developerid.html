@@ -69,7 +69,7 @@
             color: var(--primary);
         }
 
-        /* Mobile First Navigation */
+        /* Navigation */
         .nav-links {
             display: none;
             position: fixed;
@@ -159,6 +159,10 @@
             width: 100%;
         }
 
+        .search-box:focus {
+            outline: 2px solid var(--primary);
+        }
+
         .filter-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -173,6 +177,11 @@
             color: white;
             font-size: 1rem;
             width: 100%;
+            cursor: pointer;
+        }
+
+        .filter-select:focus {
+            outline: 2px solid var(--primary);
         }
 
         /* Developers Grid */
@@ -220,6 +229,7 @@
             color: var(--primary);
             margin-bottom: 1.2rem;
             font-weight: 600;
+            text-transform: capitalize;
         }
 
         .developer-skills {
@@ -236,6 +246,7 @@
             padding: 0.3rem 0.8rem;
             border-radius: 2rem;
             font-size: 0.85rem;
+            text-transform: capitalize;
         }
 
         .developer-meta {
@@ -395,7 +406,7 @@
                 <span>Webistzu</span>
             </a>
             
-            <button class="menu-toggle">
+            <button class="menu-toggle" aria-label="Toggle navigation menu">
                 <i class="fas fa-bars"></i>
             </button>
             
@@ -417,35 +428,35 @@
         
         <!-- Search and Filter -->
         <div class="search-filter">
-            <input type="text" class="search-box" placeholder="Search developers...">
+            <input type="text" class="search-box" placeholder="Search developers..." aria-label="Search developers">
             <div class="filter-row">
-                <select class="filter-select">
+                <select class="filter-select" aria-label="Filter by role">
                     <option value="">All Roles</option>
-                    <option value="frontend">Frontend</option>
-                    <option value="backend">Backend</option>
-                    <option value="fullstack">Full Stack</option>
-                    <option value="designer">UI/UX Designer</option>
+                    <option value="frontend">Frontend Developer</option>
+                    <option value="backend">Backend Developer</option>
+                    <option value="full stack">Full Stack Developer</option>
+                    <option value="ui/ux designer">UI/UX Designer</option>
                 </select>
-                <select class="filter-select">
+                <select class="filter-select" aria-label="Filter by skill">
                     <option value="">All Skills</option>
                     <option value="react">React</option>
                     <option value="vue">Vue.js</option>
                     <option value="node">Node.js</option>
                     <option value="python">Python</option>
+                    <option value="html5">HTML5</option>
                     <option value="css3">CSS3</option>
-                    <option value="JavaScript">JavaScript</option>
-
-               </select>
+                    <option value="javascript">JavaScript</option>
+                </select>
             </div>
         </div>
         
         <!-- Developers Grid -->
         <div class="developers-grid">
             <!-- Developer 1 -->
-            <a href="https://jaiprakashmd.com" class="developer-card">
+            <a href="https://jaiprakashmd.com" class="developer-card" target="_blank" rel="noopener noreferrer">
                 <span class="developer-id">WZU-001</span>
                 <h3 class="developer-name">Jai Prakash M D</h3>
-                <p class="developer-role">Full Stack</p>
+                <p class="developer-role">Full Stack Developer</p>
                 <div class="developer-skills">
                     <span class="skill-tag">HTML5</span>
                     <span class="skill-tag">CSS3</span>
@@ -453,14 +464,15 @@
                 </div>
                 <div class="developer-meta">
                     <span>1 year experience</span>
-                    <span>2+1 projects</span>
+                    <span>3 projects</span>
                 </div>
             </a>
-             <!-- Developer 2 -->
-            <a href="https://yash.theslowwman.space/" class="developer-card">
+            
+            <!-- Developer 2 -->
+            <a href="https://yash.theslowwman.space/" class="developer-card" target="_blank" rel="noopener noreferrer">
                 <span class="developer-id">WZU-002</span>
                 <h3 class="developer-name">Yashvinthan Moorthy</h3>
-                <p class="developer-role">Full Stack</p>
+                <p class="developer-role">Full Stack Developer</p>
                 <div class="developer-skills">
                     <span class="skill-tag">HTML5</span>
                     <span class="skill-tag">Python</span>
@@ -472,8 +484,6 @@
                     <span>0 projects</span>
                 </div>
             </a>
-            
-            <!-- Additional developer cards can be added here -->
         </div>
     </main>
 
@@ -484,10 +494,10 @@
                 <h3>Webistzu</h3>
                 <p>Webpages. Web Presence. Webistzu.</p>
                 <div class="social-links">
-                    <a href="#"><i class="fas fa-envelope"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
             <div class="footer-column">
@@ -509,14 +519,14 @@
             <div class="footer-column">
                 <h3>Company</h3>
                 <ul>
-                    <li><a href="https://jaiprakashmd.com" target="_blank">About Founder</a></li>
+                    <li><a href="https://jaiprakashmd.com" target="_blank" rel="noopener noreferrer">About Founder</a></li>
                     <li><a href="mailto:webistzu@gmail.com">Contact Us</a></li>
                     <li><a href="terms.html">Terms of Service</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 webistzu. All rights reserved.</p>
+            <p>&copy; 2025 Webistzu. All rights reserved.</p>
         </div>
     </footer>
 
@@ -524,11 +534,12 @@
         // Mobile Menu Toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
+            this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true');
         });
 
         // Search Functionality
         document.querySelector('.search-box').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
+            const searchTerm = e.target.value.toLowerCase().trim();
             const cards = document.querySelectorAll('.developer-card');
             
             cards.forEach(card => {
@@ -537,25 +548,42 @@
             });
         });
         
-        // Filter Functionality
+        // Filter Functionality - Fixed version
         const filters = document.querySelectorAll('.filter-select');
-        filters.forEach(filter => {
-            filter.addEventListener('change', function() {
-                const roleFilter = document.querySelector('.filter-select:nth-of-type(1)').value;
-                const skillFilter = document.querySelector('.filter-select:nth-of-type(2)').value;
-                const cards = document.querySelectorAll('.developer-card');
+        
+        function applyFilters() {
+            const roleFilter = document.querySelector('.filter-select[aria-label="Filter by role"]').value.toLowerCase();
+            const skillFilter = document.querySelector('.filter-select[aria-label="Filter by skill"]').value.toLowerCase();
+            const cards = document.querySelectorAll('.developer-card');
+            
+            cards.forEach(card => {
+                const role = card.querySelector('.developer-role').textContent.toLowerCase();
+                const skills = card.querySelector('.developer-skills').textContent.toLowerCase();
                 
-                cards.forEach(card => {
-                    const role = card.querySelector('.developer-role').textContent.toLowerCase();
-                    const skills = card.querySelector('.developer-skills').textContent.toLowerCase();
-                    
-                    const roleMatch = !roleFilter || role.includes(roleFilter);
-                    const skillMatch = !skillFilter || skills.includes(skillFilter);
-                    
-                    card.style.display = (roleMatch && skillMatch) ? 'block' : 'none';
-                });
+                // Role matching (exact match for the beginning of the role string)
+                const roleMatch = !roleFilter || role.startsWith(roleFilter);
+                
+                // Skill matching (partial match)
+                const skillMatch = !skillFilter || skills.includes(skillFilter);
+                
+                card.style.display = (roleMatch && skillMatch) ? 'block' : 'none';
+            });
+        }
+        
+        filters.forEach(filter => {
+            filter.addEventListener('change', applyFilters);
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+                document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
             });
         });
+
+        // Apply filters on page load
+        document.addEventListener('DOMContentLoaded', applyFilters);
     </script>
 </body>
 </html>
