@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Webistzu Shop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        screens: {
+          'xs': '475px',
+          'sm': '640px',
+          'md': '768px',
+          'lg': '1024px',
+          'xl': '1280px',
+          '2xl': '1536px',
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Theme Toggle -->
+  <div class="fixed top-4 right-4 z-50">
+    <button id="theme-toggle" type="button" class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full p-2 shadow-lg">
+      <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path id="theme-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Hero -->
+  <section class="bg-gray-100 dark:bg-gray-800 py-8 sm:py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="md:w-1/2 text-center md:text-left">
+        <h1 class="text-3xl xs:text-4xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Discover the Latest Trends</h1>
+        <p class="mb-4 sm:mb-6 text-base sm:text-lg dark:text-gray-300">Shop from the best collections in fashion, gadgets, and lifestyle.</p>
+        <a href="ec shop now.html" class="inline-block bg-black dark:bg-yellow-500 dark:text-black text-white px-5 py-2 sm:px-6 sm:py-3 rounded-full font-semibold hover:bg-gray-900 dark:hover:bg-yellow-600 transition-colors text-sm sm:text-base">Shop Now</a>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <div class="relative w-40 h-40 sm:w-48 sm:h-48">
+          <img src="wlogo.png" alt="Chrome Logo" class="w-full h-full">
+          <div class="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 bg-white dark:bg-gray-800 p-1 sm:p-2 rounded-full shadow-lg">
+            <span class="text-xs font-bold bg-blue-500 text-white px-2 py-0.5 sm:px-2 sm:py-1 rounded-full">NEW</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Categories -->
+  <section class="py-8 sm:py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">Shop by Categories</h2>
+      <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+        <div class="bg-white dark:bg-gray-800 shadow dark:shadow-gray-700 p-4 sm:p-6 rounded-lg text-center hover:scale-105 transition-transform">
+          <img src="ec0.jpg" class="mx-auto mb-3 sm:mb-4 w-16 h-16 sm:w-20 sm:h-20" alt="Clothing">
+          <h3 class="font-semibold text-base sm:text-lg">Clothing</h3>
+        </div>
+        <div class="bg-white dark:bg-gray-800 shadow dark:shadow-gray-700 p-4 sm:p-6 rounded-lg text-center hover:scale-105 transition-transform">
+          <img src="ec1.jpg" class="mx-auto mb-3 sm:mb-4 w-16 h-16 sm:w-20 sm:h-20" alt="Electronics">
+          <h3 class="font-semibold text-base sm:text-lg">Electronics</h3>
+        </div>
+        <div class="bg-white dark:bg-gray-800 shadow dark:shadow-gray-700 p-4 sm:p-6 rounded-lg text-center hover:scale-105 transition-transform">
+          <img src="ec2.jpg" class="mx-auto mb-3 sm:mb-4 w-16 h-16 sm:w-20 sm:h-20" alt="Shoes">
+          <h3 class="font-semibold text-base sm:text-lg">Footwear</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-gray-50 dark:bg-gray-800 py-8 sm:py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">What Our Customers Say</h2>
+      <blockquote class="text-lg sm:text-xl italic text-gray-600 dark:text-gray-300 px-2 sm:px-0">"Webistzu is my go-to for anything trendy and affordable. Love the fast delivery!"</blockquote>
+      <p class="mt-3 sm:mt-4 font-semibold text-gray-800 dark:text-gray-100">– Saanvi, Chennai</p>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-8 sm:py-12 bg-black dark:bg-gray-700 text-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Stay Updated</h2>
+      <p class="mb-4 sm:mb-6 text-sm sm:text-base">Get exclusive offers and updates straight to your inbox.</p>
+      <form class="flex flex-col sm:flex-row gap-2 sm:gap-4 justify-center max-w-md mx-auto">
+        <input type="email" placeholder="Enter your email" class="px-3 py-2 sm:px-4 sm:py-2 rounded-full w-full text-black text-sm sm:text-base" required>
+        <button type="submit" class="bg-white text-black px-4 py-2 sm:px-6 sm:py-2 rounded-full font-semibold hover:bg-gray-200 text-sm sm:text-base">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 dark:bg-gray-900 text-white py-6 sm:py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-3 md:mb-0">
+        <h3 class="text-lg sm:text-xl font-bold">Webistzu</h3>
+        <p class="text-xs sm:text-sm text-gray-400">© 2025 All rights reserved.</p>
+      </div>
+      <div class="flex gap-4 sm:gap-6">
+        <a href="#" class="text-xs sm:text-sm text-gray-400 hover:text-white">Privacy</a>
+        <a href="#" class="text-xs sm:text-sm text-gray-400 hover:text-white">Terms</a>
+        <a href="#" class="text-xs sm:text-sm text-gray-400 hover:text-white">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themePath = document.getElementById('theme-path');
+    
+    // Check for saved theme preference or use system preference
+    if (localStorage.getItem('color-theme') === 'dark' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themePath.setAttribute('d', 'M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Toggle theme
+    themeToggle.addEventListener('click', function() {
+      // Toggle icon
+      if (themePath.getAttribute('d') === 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z') {
+        themePath.setAttribute('d', 'M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z');
+        localStorage.setItem('color-theme', 'dark');
+      } else {
+        themePath.setAttribute('d', 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z');
+        localStorage.setItem('color-theme', 'light');
+      }
+      
+      // Toggle dark class
+      document.documentElement.classList.toggle('dark');
+    });
+  </script>
+</body>
+</html>

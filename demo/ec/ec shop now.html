@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="theme-color" content="#2563eb">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Webistzu Shop – Start Shopping</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              600: '#2563eb',
+              700: '#1d4ed8',
+            },
+            dark: {
+              800: '#1e293b',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Android tap highlight color */
+    * {
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+    /* Prevent zoom on input focus */
+    input, select, textarea {
+      font-size: 16px!important;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-200 pb-16">
+
+  <!-- Navbar -->
+  <nav class="bg-white dark:bg-gray-800 shadow p-4 flex justify-between items-center sticky top-0 z-40">
+    <div class="flex items-center space-x-4">
+      <h1 class="text-2xl font-bold">Webistzu</h1>
+      <div class="hidden md:flex space-x-6">
+        <a href="#" class="hover:text-primary-600 dark:hover:text-primary-600 font-medium">Home</a>
+        <a href="#" class="hover:text-primary-600 dark:hover:text-primary-600 font-medium">Shop</a>
+        <a href="#" class="hover:text-primary-600 dark:hover:text-primary-600 font-medium">Categories</a>
+        <a href="#" class="hover:text-primary-600 dark:hover:text-primary-600 font-medium">About</a>
+      </div>
+    </div>
+    <div class="flex items-center space-x-4">
+      <button class="md:hidden text-gray-600 dark:text-gray-300">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+      <a href="#" class="hidden sm:inline-block mr-4 hover:text-primary-600 dark:hover:text-primary-600 font-medium">
+        <i class="fas fa-user mr-1"></i> Login
+      </a>
+      <a href="#" class="bg-primary-600 text-white px-4 py-2 rounded-full hover:bg-primary-700 font-semibold">
+        <i class="fas fa-user-plus mr-1"></i> Sign Up
+      </a>
+      <a href="#" class="relative">
+        <i class="fas fa-shopping-cart text-xl text-gray-700 dark:text-gray-300"></i>
+        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu (Hidden) -->
+  <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+    <div class="flex flex-col space-y-3 p-4">
+      <a href="#" class="hover:text-primary-600 dark:hover:text-primary-600 font-medium">Home</a>
+      <a href="#" class="hover:text-primary-600 dark:hover:text-primary-600 font-medium">Shop</a>
+      <a href="#" class="hover:text-primary-600 dark:hover:text-primary-600 font-medium">Categories</a>
+      <a href="#" class="hover:text-primary-600 dark:hover:text-primary-600 font-medium">About</a>
+      <div class="pt-2 border-t border-gray-200 dark:border-gray-700">
+        <a href="#" class="block hover:text-primary-600 dark:hover:text-primary-600 font-medium">
+          <i class="fas fa-user mr-2"></i> Login
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Banner -->
+  <section class="bg-gradient-to-r from-indigo-500 to-purple-600 dark:from-indigo-700 dark:to-purple-800 text-white py-16 md:py-24 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Start Shopping</h2>
+      <p class="text-lg md:text-xl mb-8">Explore our exclusive collections made just for you.</p>
+      <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+        <a href="#products" class="bg-white text-indigo-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+          Shop Now <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+        <a href="#" class="border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-600 transition-colors">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Showcase -->
+  <section id="products" class="max-w-7xl mx-auto py-12 px-4 sm:px-6">
+    <div class="flex justify-between items-center mb-8">
+      <h3 class="text-2xl md:text-3xl font-bold">Top Picks</h3>
+      <a href="#" class="text-primary-600 dark:text-primary-600 hover:underline">View All</a>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Product 1 -->
+      <div class="bg-white dark:bg-gray-800 p-4 shadow rounded-lg hover:shadow-lg transition-shadow">
+        <div class="relative">
+          <img src="ec0.jpg" alt="Stylish T-Shirt" class="w-full h-48 sm:h-64 object-cover rounded-t-lg">
+          <span class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">SALE</span>
+          <button class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+            Quick View
+          </button>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-semibold text-lg">Stylish T-Shirt</h4>
+          <div class="flex items-center mt-1">
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <span class="text-gray-500 dark:text-gray-400 text-sm ml-2">(42)</span>
+          </div>
+          <div class="flex items-center mt-2">
+            <span class="text-gray-600 dark:text-gray-300 font-bold">₹799</span>
+            <span class="text-gray-400 text-sm line-through ml-2">₹1,299</span>
+            <span class="text-green-600 text-sm font-medium ml-auto">38% off</span>
+          </div>
+          <button class="mt-3 w-full bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">
+            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="bg-white dark:bg-gray-800 p-4 shadow rounded-lg hover:shadow-lg transition-shadow">
+        <div class="relative">
+          <img src="wlogo.png" alt="Smart Watch" class="w-full h-48 sm:h-64 object-cover rounded-t-lg">
+          <button class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+            Quick View
+          </button>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-semibold text-lg">Smart Watch</h4>
+          <div class="flex items-center mt-1">
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <span class="text-gray-500 dark:text-gray-400 text-sm ml-2">(28)</span>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 font-bold mt-2">₹2,999</p>
+          <button class="mt-3 w-full bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">
+            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="bg-white dark:bg-gray-800 p-4 shadow rounded-lg hover:shadow-lg transition-shadow">
+        <div class="relative">
+          <img src="ec2.jpg" alt="Running Shoes" class="w-full h-48 sm:h-64 object-cover rounded-t-lg">
+          <span class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">NEW</span>
+          <button class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+            Quick View
+          </button>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-semibold text-lg">Running Shoes</h4>
+          <div class="flex items-center mt-1">
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <span class="text-gray-500 dark:text-gray-400 text-sm ml-2">(56)</span>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300 font-bold mt-2">₹1,999</p>
+          <button class="mt-3 w-full bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">
+            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="bg-white dark:bg-gray-800 p-4 shadow rounded-lg hover:shadow-lg transition-shadow">
+        <div class="relative">
+          <img src="ec1.jpg" alt="Wireless Headphones" class="w-full h-48 sm:h-64 object-cover rounded-t-lg">
+          <button class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+            Quick View
+          </button>
+        </div>
+        <div class="mt-4">
+          <h4 class="font-semibold text-lg">Wireless Headphones</h4>
+          <div class="flex items-center mt-1">
+            <div class="flex text-yellow-400">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <span class="text-gray-500 dark:text-gray-400 text-sm ml-2">(37)</span>
+          </div>
+          <div class="flex items-center mt-2">
+            <span class="text-gray-600 dark:text-gray-300 font-bold">₹3,499</span>
+            <span class="text-gray-400 text-sm line-through ml-2">₹4,999</span>
+            <span class="text-green-600 text-sm font-medium ml-auto">30% off</span>
+          </div>
+          <button class="mt-3 w-full bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors">
+            <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="bg-gray-100 dark:bg-gray-800 py-12 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto">
+      <h3 class="text-2xl md:text-3xl font-bold text-center mb-8">Why Choose Us</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="bg-white dark:bg-gray-700 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-truck text-2xl text-primary-600"></i>
+          </div>
+          <h4 class="font-bold text-lg mb-2">Free Shipping</h4>
+          <p class="text-gray-600 dark:text-gray-300">Free delivery on all orders over ₹999</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-white dark:bg-gray-700 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-undo-alt text-2xl text-primary-600"></i>
+          </div>
+          <h4 class="font-bold text-lg mb-2">Easy Returns</h4>
+          <p class="text-gray-600 dark:text-gray-300">30-day return policy for all items</p>
+        </div>
+        <div class="text-center">
+          <div class="bg-white dark:bg-gray-700 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-headset text-2xl text-primary-600"></i>
+          </div>
+          <h4 class="font-bold text-lg mb-2">24/7 Support</h4>
+          <p class="text-gray-600 dark:text-gray-300">Dedicated customer support team</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="bg-primary-600 text-white py-12 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-2xl md:text-3xl font-bold mb-4">Subscribe to Our Newsletter</h3>
+      <p class="mb-6 max-w-2xl mx-auto">Get the latest updates on new products and upcoming sales</p>
+      <form class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+        <input type="email" placeholder="Your email address" class="px-4 py-3 rounded-full w-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+        <button type="submit" class="bg-white text-primary-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 dark:bg-gray-900 text-white py-8 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h4 class="text-lg font-bold mb-4">Webistzu</h4>
+          <p class="text-gray-400">Your one-stop shop for all the latest trends and products.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold mb-4">Shop</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">All Products</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">New Arrivals</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Featured</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Sale</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold mb-4">Customer Service</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQs</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Policy</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Returns & Exchanges</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold mb-4">Connect With Us</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors text-xl"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm">© 2025 Webistzu. All rights reserved.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy Policy</a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms of Service</a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle (Bottom Right) -->
+  <button id="theme-toggle-mobile" class="fixed bottom-6 right-6 z-50 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg md:hidden">
+    <svg id="theme-icon-mobile" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path id="theme-path-mobile" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+    </svg>
+  </button>
+
+  <!-- Login / Sign Up Modal (Hidden Initially) -->
+  <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50 p-4">
+    <div class="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-md relative">
+      <button onclick="toggleModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black dark:hover:text-white text-xl">&times;</button>
+      <h3 class="text-2xl font-bold mb-6 text-center">Welcome to Webistzu</h3>
+      <div class="flex border-b border-gray-200 dark:border-gray-700 mb-6">
+        <button id="loginTab" class="flex-1 py-2 font-medium border-b-2 border-primary-600 text-primary-600 dark:text-primary-600">Login</button>
+        <button id="signupTab" class="flex-1 py-2 font-medium text-gray-500 dark:text-gray-400">Sign Up</button>
+      </div>
+      <form id="loginForm">
+        <input type="email" placeholder="Email address" class="w-full mb-4 p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+        <input type="password" placeholder="Password" class="w-full mb-4 p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+        <div class="flex justify-between items-center mb-6">
+          <label class="flex items-center">
+            <input type="checkbox" class="rounded border-gray-300 text-primary-600">
+            <span class="ml-2 text-sm text-gray-600 dark:text-gray-300">Remember me</span>
+          </label>
+          <a href="#" class="text-sm text-primary-600 hover:underline">Forgot password?</a>
+        </div>
+        <button type="submit" class="w-full bg-primary-600 text-white py-3 rounded-lg hover:bg-primary-700 transition-colors">Login</button>
+      </form>
+      <form id="signupForm" class="hidden">
+        <input type="text" placeholder="Full Name" class="w-full mb-4 p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+        <input type="email" placeholder="Email address" class="w-full mb-4 p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+        <input type="password" placeholder="Create Password" class="w-full mb-4 p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+        <input type="password" placeholder="Confirm Password" class="w-full mb-6 p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+        <button type="submit" class="w-full bg-primary-600 text-white py-3 rounded-lg hover:bg-primary-700 transition-colors">Create Account</button>
+      </form>
+      <div class="text-center mt-6">
+        <p class="text-sm text-gray-600 dark:text-gray-300">Or continue with</p>
+        <div class="flex justify-center space-x-4 mt-4">
+          <button class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-2 rounded-full">
+            <i class="fab fa-google text-red-500"></i>
+          </button>
+          <button class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-2 rounded-full">
+            <i class="fab fa-facebook-f text-blue-600"></i>
+          </button>
+          <button class="bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 p-2 rounded-full">
+            <i class="fab fa-apple"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme toggle functionality (desktop)
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themePath = document.getElementById('theme-path');
+    
+    // Theme toggle functionality (mobile)
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const themeIconMobile = document.getElementById('theme-icon-mobile');
+    const themePathMobile = document.getElementById('theme-path-mobile');
+    
+    // Check for saved theme preference or use system preference
+    if (localStorage.getItem('color-theme') === 'dark' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themePath.setAttribute('d', 'M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z');
+      themePathMobile.setAttribute('d', 'M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Toggle theme (desktop)
+    themeToggle.addEventListener('click', function() {
+      toggleTheme();
+    });
+
+    // Toggle theme (mobile)
+    themeToggleMobile.addEventListener('click', function() {
+      toggleTheme();
+    });
+
+    function toggleTheme() {
+      // Toggle icon
+      if (themePath.getAttribute('d') === 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z') {
+        themePath.setAttribute('d', 'M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z');
+        themePathMobile.setAttribute('d', 'M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z');
+        localStorage.setItem('color-theme', 'dark');
+      } else {
+        themePath.setAttribute('d', 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z');
+        themePathMobile.setAttribute('d', 'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z');
+        localStorage.setItem('color-theme', 'light');
+      }
+      
+      // Toggle dark class
+      document.documentElement.classList.toggle('dark');
+    }
+
+    // Mobile menu toggle
+    const mobileMenuButton = document.querySelector('nav button.md\\:hidden');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Modal functionality
+    function toggleModal() {
+      document.getElementById('loginModal').classList.toggle('hidden');
+      document.getElementById('loginModal').classList.toggle('flex');
+    }
+
+    // Trigger modal on Login/Signup click
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+      if (link.textContent.includes('Login') || link.textContent.includes('Sign Up')) {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          toggleModal();
+        });
+      }
+    });
+
+    // Login/Signup tab switching
+    const loginTab = document.getElementById('loginTab');
+    const signupTab = document.getElementById('signupTab');
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    
+    loginTab.addEventListener('click', function(e) {
+      e.preventDefault();
+      loginTab.classList.add('border-primary-600', 'text-primary-600');
+      loginTab.classList.remove('text-gray-500', 'dark:text-gray-400');
+      signupTab.classList.remove('border-primary-600', 'text-primary-600');
+      signupTab.classList.add('text-gray-500', 'dark:text-gray-400');
+      loginForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
+    });
+    
+    signupTab.addEventListener('click', function(e) {
+      e.preventDefault();
+      signupTab.classList.add('border-primary-600', 'text-primary-600');
+      signupTab.classList.remove('text-gray-500', 'dark:text-gray-400');
+      loginTab.classList.remove('border-primary-600', 'text-primary-600');
+      loginTab.classList.add('text-gray-500', 'dark:text-gray-400');
+      signupForm.classList.remove('hidden');
+      loginForm.classList.add('hidden');
+    });
+
+    // Android-specific optimizations
+    if (/Android/i.test(navigator.userAgent)) {
+      // Add touch feedback for buttons
+      document.querySelectorAll('button, a').forEach(button => {
+        button.addEventListener('touchstart', function() {
+          this.classList.add('opacity-75');
+        });
+        button.addEventListener('touchend', function() {
+          this.classList.remove('opacity-75');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
