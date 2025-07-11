@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #0e0e2c;
+      --text-color: #ffffff;
+      --primary-color: #ff4fba;
+      --button-hover: #e43ca0;
+      --accent-color: #48cfff;
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    body.dark-mode {
+      --bg-color: #121212;
+      --text-color: #f5f5f5;
+      --primary-color: #d46eff;
+      --button-hover: #a84ef0;
+      --accent-color: #7ec8ff;
+      --card-bg: rgba(30, 30, 30, 0.5);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: var(--transition);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    /* Mobile-first navbar */
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
+      position: relative;
+      z-index: 100;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    .nav-link {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 5px 0;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .nav-link.active {
+      color: var(--primary-color);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Enhanced Toggle Buttons Container */
+    .toggle-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    /* Enhanced Toggle Buttons */
+    .toggle-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 15px;
+      background: var(--card-bg);
+      border: none;
+      border-radius: 30px;
+      color: var(--text-color);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .toggle-btn:active {
+      transform: translateY(0);
+    }
+
+    .toggle-btn i {
+      transition: var(--transition);
+    }
+
+    .toggle-btn span {
+      display: none;
+    }
+
+    /* Pulse animation for music button when playing */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .music-playing .fa-music,
+    .music-playing .fa-pause {
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Tooltip styles */
+    .tooltip {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      z-index: 100;
+      margin-top: 5px;
+    }
+    
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent rgba(0,0,0,0.8) transparent;
+    }
+
+    /* Tablet and desktop styles */
+    @media (min-width: 600px) {
+      .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 5%;
+      }
+
+      .logo {
+        margin-bottom: 0;
+        text-align: left;
+        width: auto;
+      }
+
+      .nav-container {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 30px;
+        width: auto;
+      }
+
+      .nav-links {
+        flex-direction: row;
+        margin-bottom: 0;
+        width: auto;
+        gap: 25px;
+      }
+
+      .toggle-container {
+        width: auto;
+        justify-content: flex-end;
+        gap: 15px;
+      }
+
+      .toggle-btn span {
+        display: inline;
+      }
+
+      .toggle-btn {
+        padding: 10px 20px;
+      }
+    }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+      padding: 20px 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.8rem, 6vw, 2.5rem);
+      margin: 10px 0 5px;
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 10vw, 3.5rem);
+      margin: 5px 0 10px;
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+      margin: 15px auto;
+      max-width: 90%;
+    }
+
+    /* Countdown */
+    .countdown {
+      margin: 20px auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      max-width: 350px;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .countdown-number {
+      font-size: clamp(1.5rem, 6vw, 2rem);
+      color: var(--primary-color);
+      font-weight: 800;
+    }
+
+    .countdown-label {
+      font-size: clamp(0.7rem, 3vw, 0.9rem);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: var(--primary-color);
+      color: white;
+      font-weight: bold;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: clamp(0.9rem, 3.5vw, 1rem);
+      margin: 10px 0;
+      border: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+      background: var(--button-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    /* Cake */
+    .cake-container {
+      margin: 25px auto;
+      width: clamp(100px, 30vw, 150px);
+      height: clamp(100px, 30vw, 150px);
+      position: relative;
+    }
+
+    .cake {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 10px rgba(255, 79, 186, 0.4));
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(3deg); }
+    }
+
+    /* Message box */
+    .message-box {
+      margin: 25px auto;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      max-width: 90%;
+      text-align: left;
+    }
+
+    .message-box p {
+      margin: 10px 0;
+      font-size: clamp(0.9rem, 3.5vw, 1rem);
+    }
+
+    .message-box p:first-child {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    /* Social links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px 0;
+    }
+
+    .social-link {
+      color: var(--text-color);
+      font-size: clamp(1.2rem, 5vw, 1.5rem);
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: clamp(0.8rem, 3vw, 0.9rem);
+      opacity: 0.8;
+    }
+
+    /* Canvas for confetti */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Tablet and desktop styles */
+    @media (min-width: 600px) {
+      .hero {
+        padding: 40px 5%;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 600px;
+        gap: 15px;
+      }
+
+      .message-box {
+        max-width: 70%;
+        padding: 25px;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        padding: 60px 5%;
+      }
+
+      .message-box {
+        max-width: 60%;
+        padding: 30px;
+      }
+
+      .countdown {
+        max-width: 700px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" preload="auto" loop>
+    <source src="./music/Ladyfingers.mp3" type="audio/mp3">
+  </audio>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="navbar">
+    <span class="logo">• webistzu</span>
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="#" class="nav-link active">Home</a>
+        <a href="surprise.html" class="nav-link">Surprise</a>
+      </div>
+      <div class="toggle-container">
+        <button class="toggle-btn" id="musicToggle" aria-label="Toggle music">
+          <i class="fas fa-music"></i>
+          <span>Music</span>
+        </button>
+        <button class="toggle-btn" id="darkModeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+          <span>Dark Mode</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="hero">
+    <h2>HAPPY</h2>
+    <h1>BIRTHDAY name!</h1>
+    <p>Wishing you joy, laughter, and everything you love. Enjoy your special day to the fullest!</p>
+    
+    <div class="countdown" id="countdown">
+      <div class="countdown-item">
+        <span class="countdown-number" id="days">00</span>
+        <span class="countdown-label">Days</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="hours">00</span>
+        <span class="countdown-label">Hours</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="minutes">00</span>
+        <span class="countdown-label">Minutes</span>
+      </div>
+      <div class="countdown-item">
+        <span class="countdown-number" id="seconds">00</span>
+        <span class="countdown-label">Seconds</span>
+      </div>
+    </div>
+    
+    <a href="#" class="btn" id="goNowBtn" style="pointer-events: none; opacity: 0.5;">GO NOW</a>
+    
+    <div class="cake-container">
+      <img src="img/cake.gif" alt="Birthday Cake" class="cake" loading="lazy">
+    </div>
+    
+    <div class="message-box">
+      <p>🎁 From webistzu: "Happy Birthday name! Wishing you an amazing year ahead!"</p>
+      <p>When you feel sad, remember that you have me, ok? I may not be much but I will always be by your side.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Made with ❤️ by webistzu</p>
+  </footer>
+
+  <script>
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Birthday varaikum wait paanu meenupapu');
+      });
+    }); 
+            
+    // Mobile-optimized JavaScript
+    document.addEventListener('DOMContentLoaded', function() {
+      // Configuration
+      const BIRTHDAY_DATE = "2025-04-01T00:00:00";
+      
+      // DOM Elements
+      const body = document.body;
+      const bgMusic = document.getElementById("bgMusic");
+      const musicToggle = document.getElementById("musicToggle");
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const goNowBtn = document.getElementById("goNowBtn");
+      const countdownEls = {
+        days: document.getElementById("days"),
+        hours: document.getElementById("hours"),
+        minutes: document.getElementById("minutes"),
+        seconds: document.getElementById("seconds")
+      };
+      
+      // State
+      let isMusicPlaying = false;
+      
+      // Initialize theme from localStorage or system preference
+      function initTheme() {
+        const savedMode = localStorage.getItem('darkMode');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedMode === 'enabled' || (!savedMode && systemPrefersDark)) {
+          body.classList.add('dark-mode');
+          darkModeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Light Mode</span>';
+        }
+        
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+      }
+      
+      function toggleDarkMode() {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        
+        darkModeToggle.innerHTML = isDark 
+          ? '<i class="fas fa-sun"></i><span>Light Mode</span>'
+          : '<i class="fas fa-moon"></i><span>Dark Mode</span>';
+        
+        localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+      }
+      
+      // Initialize audio with mobile-friendly approach
+      function initAudio() {
+        bgMusic.volume = 0.2;
+        
+        musicToggle.addEventListener('click', toggleMusic);
+        
+        // Enable audio on any interaction (required for mobile autoplay)
+        const enableAudio = () => {
+          if (!isMusicPlaying) {
+            bgMusic.play().then(() => {
+              isMusicPlaying = true;
+              musicToggle.innerHTML = '<i class="fas fa-pause"></i><span>Pause</span>';
+              musicToggle.classList.add('music-playing');
+            }).catch(e => {
+              console.log("Audio play failed:", e);
+              // Show tooltip to inform user to interact first
+              const tooltip = document.createElement('div');
+              tooltip.className = 'tooltip';
+              tooltip.textContent = 'Tap anywhere to enable music';
+              musicToggle.appendChild(tooltip);
+              setTimeout(() => tooltip.remove(), 2000);
+            });
+          }
+        };
+        
+        ['click', 'touchstart'].forEach(evt => {
+          document.addEventListener(evt, enableAudio, { once: true });
+        });
+      }
+      
+      function toggleMusic() {
+        if (isMusicPlaying) {
+          bgMusic.pause();
+          musicToggle.innerHTML = '<i class="fas fa-music"></i><span>Music</span>';
+          musicToggle.classList.remove('music-playing');
+        } else {
+          bgMusic.play().then(() => {
+            isMusicPlaying = true;
+            musicToggle.innerHTML = '<i class="fas fa-pause"></i><span>Pause</span>';
+            musicToggle.classList.add('music-playing');
+          }).catch(e => {
+            console.log("Audio play failed:", e);
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = 'Tap anywhere first to enable music';
+            musicToggle.appendChild(tooltip);
+            setTimeout(() => tooltip.remove(), 2000);
+          });
+        }
+        isMusicPlaying = !isMusicPlaying;
+      }
+      
+      // Mobile-optimized countdown
+      function initCountdown() {
+        const targetDate = new Date(BIRTHDAY_DATE).getTime();
+        
+        function updateCountdown() {
+          const now = new Date().getTime();
+          const distance = targetDate - now;
+          
+          if (distance <= 0) {
+            // Birthday time!
+            document.getElementById("countdown").innerHTML = `
+              <div class="countdown-item" style="grid-column: 1 / -1;">
+                <span class="countdown-number">🎉</span>
+                <span class="countdown-label">Happy Birthday!</span>
+              </div>
+            `;
+            
+            goNowBtn.href = "birthday.html";
+            goNowBtn.style.pointerEvents = "auto";
+            goNowBtn.style.opacity = "1";
+            
+            if (now < targetDate + 1000) {
+              setTimeout(() => {
+                window.location.href = "./birthday.html";
+              }, 2000);
+            }
+            
+            return;
+          }
+          
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+          
+          countdownEls.days.textContent = days.toString().padStart(2, '0');
+          countdownEls.hours.textContent = hours.toString().padStart(2, '0');
+          countdownEls.minutes.textContent = minutes.toString().padStart(2, '0');
+          countdownEls.seconds.textContent = seconds.toString().padStart(2, '0');
+          
+          requestAnimationFrame(updateCountdown);
+        }
+        
+        updateCountdown();
+      }
+      
+      // Lightweight canvas confetti for mobile
+      function initConfetti() {
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        const particles = [];
+        const colors = ['#ff4fba', '#48cfff', '#d46eff', '#ffb648'];
+        
+        function createParticles() {
+          for (let i = 0; i < 20; i++) {
+            particles.push({
+              x: Math.random() * canvas.width,
+              y: -10,
+              size: Math.random() * 8 + 4,
+              speed: Math.random() * 3 + 1,
+              color: colors[Math.floor(Math.random() * colors.length)],
+              sway: Math.random() * 2 - 1
+            });
+          }
+        }
+        
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          // Create new particles occasionally
+          if (Math.random() < 0.1) {
+            createParticles();
+          }
+          
+          // Update and draw particles
+          for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.y += p.speed;
+            p.x += p.sway;
+            
+            ctx.fillStyle = p.color;
+            ctx.fillRect(p.x, p.y, p.size, p.size);
+            
+            // Remove particles that are off screen
+            if (p.y > canvas.height) {
+              particles.splice(i, 1);
+              i--;
+            }
+          }
+          
+          requestAnimationFrame(animate);
+        }
+        
+        animate();
+      }
+      
+      // Initialize everything
+      initTheme();
+      initAudio();
+      initCountdown();
+      initConfetti();
+      
+      // Clean up on page hide (for mobile)
+      document.addEventListener('visibilitychange', function() {
+        if (document.hidden && isMusicPlaying) {
+          bgMusic.pause();
+          musicToggle.innerHTML = '<i class="fas fa-music"></i><span>Music</span>';
+          musicToggle.classList.remove('music-playing');
+          isMusicPlaying = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
